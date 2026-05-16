@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 const C = {
   deepBurgundy: "#4E0F24", wineRed: "#7A1E3B", blushRow: "#F5E8ED",
@@ -470,11 +471,10 @@ export default function App() {
         </div>
       )}
 
+      <Analytics />
+
       <style>{"\n        * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }\n        button:active { opacity: 0.75; }\n        input:focus { border-color: #7A1E3B !important; outline: none; }\n      "}</style>
 
-      </div>
-    </div>
-  </div>
     </div>
   );
 }
