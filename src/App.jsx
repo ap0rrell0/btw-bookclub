@@ -17,64 +17,63 @@ const STATUS_META = {
   "Did Not Finish":    { bg: C.dnfBg,     text: C.dnfText,     border: C.dnfBorder,     label: "DNF" },
 };
 const STATUS_OPTIONS = Object.keys(STATUS_META);
-const RATING_OPTIONS = [1, 2, 3, 4, 5];
 
 const BOOKS_INITIAL = [
-  {id:1, month:"May", year:2026, title:"Her Last Breath", author:"Taylor Adams", genre:"Thriller", clubStatus:"Currently Reading", rating:null, notes:null, myStatus:"Currently Reading"},
-  {id:2, month:"April", year:2026, title:"The Lost Heiress", author:"Elizabeth Klehfoth", genre:"Thriller", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:3, month:"March", year:2026, title:"The First Time I Saw Him", author:"Laura Dave", genre:"Thriller", clubStatus:"Read", rating:5, notes:null, myStatus:null},
-  {id:4, month:"February", year:2026, title:"Onyx Storm", author:"Rebecca Yarros", genre:"Fantasy", clubStatus:"Read", rating:5, notes:null, myStatus:null},
-  {id:5, month:"January", year:2026, title:"Winter Garden", author:"Kristin Hannah", genre:"Literary Fiction", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:6, month:"December", year:2025, title:"Wreck the Halls", author:"Tessa Bailey", genre:"Romance", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:7, month:"November", year:2025, title:"The Woman in the Cabin", author:"Becca Day", genre:"Thriller", clubStatus:"Read", rating:5, notes:null, myStatus:null},
-  {id:8, month:"November", year:2025, title:"The Boyfriend", author:"Freida McFadden", genre:"Thriller", clubStatus:"Read", rating:4, notes:"Bonus book", myStatus:null},
-  {id:9, month:"October", year:2025, title:"The Surrogate Mother", author:"Freida McFadden", genre:"Thriller", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:10, month:"October", year:2025, title:"The Woman in Cabin 10", author:"Ruth Ware", genre:"Thriller", clubStatus:"Read", rating:4, notes:"Bonus book", myStatus:null},
-  {id:11, month:"September", year:2025, title:"Not Quite Dead Yet", author:"Holly Jackson", genre:"Thriller", clubStatus:"Read", rating:5, notes:null, myStatus:null},
-  {id:12, month:"August", year:2025, title:"Atmosphere", author:"Taylor Jenkins Reid", genre:"Literary Fiction", clubStatus:"Read", rating:5, notes:null, myStatus:null},
-  {id:13, month:"July", year:2025, title:"The Amalfi Curse", author:"Sarah Penner", genre:"Historical Fantasy", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:14, month:"June", year:2025, title:"The Orphanage by the Lake", author:"Daniel G. Miller", genre:"Mystery Thriller", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:15, month:"May", year:2025, title:"The Blue Hour", author:"Paula Hawkins", genre:"Thriller", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:16, month:"April", year:2025, title:"The Housemaid", author:"Freida McFadden", genre:"Thriller", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:17, month:"March", year:2025, title:"The Lake House Children", author:"Gregg Dunnett", genre:"Thriller", clubStatus:"Read", rating:3, notes:null, myStatus:null},
-  {id:18, month:"January", year:2025, title:"The Frozen River", author:"Ariel Lawhon", genre:"Historical Fiction", clubStatus:"Read", rating:5, notes:null, myStatus:null},
-  {id:19, month:"December", year:2024, title:"The Christmas Bookshop", author:"Jenny Colgan", genre:"Fiction", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:20, month:"November", year:2024, title:"The Fragile Threads of Power", author:"V.E. Schwab", genre:"Fantasy", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:21, month:"October", year:2024, title:"The Heiress", author:"Rachel Hawkins", genre:"Mystery Thriller", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:22, month:"September", year:2024, title:"The Midnight Feast", author:"Lucy Foley", genre:"Thriller", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:23, month:"August", year:2024, title:"The Wilds", author:"Sarah Pearse", genre:"Thriller", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:24, month:"July", year:2024, title:"The Fury", author:"Alex Michaelides", genre:"Thriller", clubStatus:"Read", rating:5, notes:null, myStatus:null},
-  {id:25, month:"June", year:2024, title:"End of Story", author:"A.J. Finn", genre:"Thriller", clubStatus:"Read", rating:3, notes:null, myStatus:null},
-  {id:26, month:"May", year:2024, title:"Iron Flame", author:"Rebecca Yarros", genre:"Fantasy", clubStatus:"Read", rating:5, notes:null, myStatus:null},
-  {id:27, month:"April", year:2024, title:"Fourth Wing", author:"Rebecca Yarros", genre:"Fantasy", clubStatus:"Read", rating:5, notes:null, myStatus:null},
-  {id:28, month:"March", year:2024, title:"Hello Beautiful", author:"Ann Napolitano", genre:"Literary Fiction", clubStatus:"Read", rating:4, notes:"Oprah Book Club", myStatus:null},
-  {id:29, month:"February", year:2024, title:"Yellowface", author:"R.F. Kuang", genre:"Literary Fiction", clubStatus:"Read", rating:5, notes:"Goodreads Best Fiction 2023", myStatus:null},
-  {id:30, month:"January", year:2024, title:"The Other Mrs.", author:"Mary Kubica", genre:"Thriller", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:31, month:"November", year:2023, title:"The Whispers", author:"Ashley Audrain", genre:"Thriller", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:32, month:"October", year:2023, title:"None of This Is True", author:"Lisa Jewell", genre:"Thriller", clubStatus:"Read", rating:5, notes:null, myStatus:null},
-  {id:33, month:"September", year:2023, title:"One Last Rainy Day", author:"Kate Stewart", genre:"Romance", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:34, month:"July", year:2023, title:"The Book Haters Club", author:"Gretchen Anthony", genre:"Fiction", clubStatus:"Read", rating:3, notes:null, myStatus:null},
-  {id:35, month:"June", year:2023, title:"Homecoming", author:"Kate Morton", genre:"Mystery", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:36, month:"May", year:2023, title:"The Cuban Heiress", author:"Chanel Cleeton", genre:"Historical Fiction", clubStatus:"Read", rating:4, notes:"Bonus: After I Do", myStatus:null},
-  {id:37, month:"April", year:2023, title:"The London Seance Society", author:"Sarah Penner", genre:"Historical Fiction", clubStatus:"Read", rating:5, notes:"Bonus: The Perfumist of Paris", myStatus:null},
-  {id:38, month:"March", year:2023, title:"Someone Elses Shoes", author:"Jojo Moyes", genre:"Fiction", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:39, month:"February", year:2023, title:"Spare", author:"Prince Harry", genre:"Memoir", clubStatus:"Read", rating:3, notes:null, myStatus:null},
-  {id:40, month:"January", year:2023, title:"Wish You Were Here", author:"Jodi Picoult", genre:"Literary Fiction", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:41, month:"December", year:2022, title:"Last Christmas in Paris", author:"Hazel Gaynor and Heather Webb", genre:"Historical Fiction", clubStatus:"Read", rating:4, notes:"Christmas Bonus", myStatus:null},
-  {id:42, month:"November", year:2022, title:"Pretty Little Wife", author:"Darby Kane", genre:"Thriller", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:43, month:"October", year:2022, title:"The Henna Artist", author:"Alka Joshi", genre:"Historical Fiction", clubStatus:"Read", rating:5, notes:null, myStatus:null},
-  {id:44, month:"September", year:2022, title:"The Retreat", author:"Sarah Pearse", genre:"Thriller", clubStatus:"Read", rating:4, notes:"Bonus: Come Fly the World", myStatus:null},
-  {id:45, month:"August", year:2022, title:"The Good Lie", author:"A.R. Torre", genre:"Thriller", clubStatus:"Read", rating:3, notes:"Bonus: Things We Never Got Over", myStatus:null},
-  {id:46, month:"July", year:2022, title:"Counterfeit", author:"Kirstin Chen", genre:"Thriller", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:47, month:"June", year:2022, title:"The Diamond Eye", author:"Kate Quinn", genre:"Historical Fiction", clubStatus:"Read", rating:5, notes:"Bonus: The Overnight Guest", myStatus:null},
-  {id:48, month:"May", year:2022, title:"The Maidens", author:"Alex Michaelides", genre:"Thriller", clubStatus:"Read", rating:4, notes:"Bonus: Too Late", myStatus:null},
-  {id:49, month:"April", year:2022, title:"The Things We Cannot Say", author:"Kelly Rimmer", genre:"Historical Fiction", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:50, month:"March", year:2022, title:"The Paris Apartment", author:"Lucy Foley", genre:"Thriller", clubStatus:"Read", rating:4, notes:null, myStatus:null},
-  {id:51, month:"February", year:2022, title:"Reminders of Him", author:"Colleen Hoover", genre:"Romance", clubStatus:"Read", rating:5, notes:null, myStatus:null},
-  {id:52, month:"January", year:2022, title:"The Last Thing He Told Me", author:"Laura Dave", genre:"Thriller", clubStatus:"Read", rating:5, notes:null, myStatus:null},
-  {id:53, month:"December", year:2021, title:"Verity", author:"Colleen Hoover", genre:"Thriller", clubStatus:"Read", rating:5, notes:"Bonus book", myStatus:null},
-  {id:54, month:"November", year:2021, title:"People We Meet on Vacation", author:"Emily Henry", genre:"Romance", clubStatus:"Read", rating:5, notes:null, myStatus:null},
-  {id:55, month:"October", year:2021, title:"The Lost Apothecary", author:"Sarah Penner", genre:"Historical Fiction", clubStatus:"Read", rating:5, notes:null, myStatus:null},
+  {id:1, month:"May", year:2026, title:"Her Last Breath", author:"Taylor Adams", genre:"Thriller", clubStatus:"Currently Reading", rating:"--", notes:null, myStatus:"Currently Reading"},
+  {id:2, month:"April", year:2026, title:"The Lost Heiress", author:"Elizabeth Klehfoth", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:3, month:"March", year:2026, title:"The First Time I Saw Him", author:"Laura Dave", genre:"Thriller", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
+  {id:4, month:"February", year:2026, title:"Onyx Storm", author:"Rebecca Yarros", genre:"Fantasy", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
+  {id:5, month:"January", year:2026, title:"Winter Garden", author:"Kristin Hannah", genre:"Literary Fiction", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:6, month:"December", year:2025, title:"Wreck the Halls", author:"Tessa Bailey", genre:"Romance", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:7, month:"November", year:2025, title:"The Woman in the Cabin", author:"Becca Day", genre:"Thriller", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
+  {id:8, month:"November", year:2025, title:"The Boyfriend", author:"Freida McFadden", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:"Bonus book", myStatus:null},
+  {id:9, month:"October", year:2025, title:"The Surrogate Mother", author:"Freida McFadden", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:10, month:"October", year:2025, title:"The Woman in Cabin 10", author:"Ruth Ware", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:"Bonus book", myStatus:null},
+  {id:11, month:"September", year:2025, title:"Not Quite Dead Yet", author:"Holly Jackson", genre:"Thriller", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
+  {id:12, month:"August", year:2025, title:"Atmosphere", author:"Taylor Jenkins Reid", genre:"Literary Fiction", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
+  {id:13, month:"July", year:2025, title:"The Amalfi Curse", author:"Sarah Penner", genre:"Historical Fantasy", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:14, month:"June", year:2025, title:"The Orphanage by the Lake", author:"Daniel G. Miller", genre:"Mystery Thriller", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:15, month:"May", year:2025, title:"The Blue Hour", author:"Paula Hawkins", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:16, month:"April", year:2025, title:"The Housemaid", author:"Freida McFadden", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:17, month:"March", year:2025, title:"The Lake House Children", author:"Gregg Dunnett", genre:"Thriller", clubStatus:"Read", rating:"3/5", notes:null, myStatus:null},
+  {id:18, month:"January", year:2025, title:"The Frozen River", author:"Ariel Lawhon", genre:"Historical Fiction", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
+  {id:19, month:"December", year:2024, title:"The Christmas Bookshop", author:"Jenny Colgan", genre:"Fiction", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:20, month:"November", year:2024, title:"The Fragile Threads of Power", author:"V.E. Schwab", genre:"Fantasy", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:21, month:"October", year:2024, title:"The Heiress", author:"Rachel Hawkins", genre:"Mystery Thriller", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:22, month:"September", year:2024, title:"The Midnight Feast", author:"Lucy Foley", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:23, month:"August", year:2024, title:"The Wilds", author:"Sarah Pearse", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:24, month:"July", year:2024, title:"The Fury", author:"Alex Michaelides", genre:"Thriller", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
+  {id:25, month:"June", year:2024, title:"End of Story", author:"A.J. Finn", genre:"Thriller", clubStatus:"Read", rating:"3/5", notes:null, myStatus:null},
+  {id:26, month:"May", year:2024, title:"Iron Flame", author:"Rebecca Yarros", genre:"Fantasy", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
+  {id:27, month:"April", year:2024, title:"Fourth Wing", author:"Rebecca Yarros", genre:"Fantasy", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
+  {id:28, month:"March", year:2024, title:"Hello Beautiful", author:"Ann Napolitano", genre:"Literary Fiction", clubStatus:"Read", rating:"4/5", notes:"Oprah Book Club", myStatus:null},
+  {id:29, month:"February", year:2024, title:"Yellowface", author:"R.F. Kuang", genre:"Literary Fiction", clubStatus:"Read", rating:"5/5", notes:"Goodreads Best Fiction 2023", myStatus:null},
+  {id:30, month:"January", year:2024, title:"The Other Mrs.", author:"Mary Kubica", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:31, month:"November", year:2023, title:"The Whispers", author:"Ashley Audrain", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:32, month:"October", year:2023, title:"None of This Is True", author:"Lisa Jewell", genre:"Thriller", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
+  {id:33, month:"September", year:2023, title:"One Last Rainy Day", author:"Kate Stewart", genre:"Romance", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:34, month:"July", year:2023, title:"The Book Haters Club", author:"Gretchen Anthony", genre:"Fiction", clubStatus:"Read", rating:"3/5", notes:null, myStatus:null},
+  {id:35, month:"June", year:2023, title:"Homecoming", author:"Kate Morton", genre:"Mystery", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:36, month:"May", year:2023, title:"The Cuban Heiress", author:"Chanel Cleeton", genre:"Historical Fiction", clubStatus:"Read", rating:"4/5", notes:"Bonus: After I Do", myStatus:null},
+  {id:37, month:"April", year:2023, title:"The London Seance Society", author:"Sarah Penner", genre:"Historical Fiction", clubStatus:"Read", rating:"5/5", notes:"Bonus: The Perfumist of Paris", myStatus:null},
+  {id:38, month:"March", year:2023, title:"Someone Else's Shoes", author:"Jojo Moyes", genre:"Fiction", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:39, month:"February", year:2023, title:"Spare", author:"Prince Harry", genre:"Memoir", clubStatus:"Read", rating:"3/5", notes:null, myStatus:null},
+  {id:40, month:"January", year:2023, title:"Wish You Were Here", author:"Jodi Picoult", genre:"Literary Fiction", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:41, month:"December", year:2022, title:"Last Christmas in Paris", author:"Hazel Gaynor and Heather Webb", genre:"Historical Fiction", clubStatus:"Read", rating:"4/5", notes:"Christmas Bonus", myStatus:null},
+  {id:42, month:"November", year:2022, title:"Pretty Little Wife", author:"Darby Kane", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:43, month:"October", year:2022, title:"The Henna Artist", author:"Alka Joshi", genre:"Historical Fiction", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
+  {id:44, month:"September", year:2022, title:"The Retreat", author:"Sarah Pearse", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:"Bonus: Come Fly the World", myStatus:null},
+  {id:45, month:"August", year:2022, title:"The Good Lie", author:"A.R. Torre", genre:"Thriller", clubStatus:"Read", rating:"3/5", notes:"Bonus: Things We Never Got Over", myStatus:null},
+  {id:46, month:"July", year:2022, title:"Counterfeit", author:"Kirstin Chen", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:47, month:"June", year:2022, title:"The Diamond Eye", author:"Kate Quinn", genre:"Historical Fiction", clubStatus:"Read", rating:"5/5", notes:"Bonus: The Overnight Guest", myStatus:null},
+  {id:48, month:"May", year:2022, title:"The Maidens", author:"Alex Michaelides", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:"Bonus: Too Late", myStatus:null},
+  {id:49, month:"April", year:2022, title:"The Things We Cannot Say", author:"Kelly Rimmer", genre:"Historical Fiction", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:50, month:"March", year:2022, title:"The Paris Apartment", author:"Lucy Foley", genre:"Thriller", clubStatus:"Read", rating:"4/5", notes:null, myStatus:null},
+  {id:51, month:"February", year:2022, title:"Reminders of Him", author:"Colleen Hoover", genre:"Romance", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
+  {id:52, month:"January", year:2022, title:"The Last Thing He Told Me", author:"Laura Dave", genre:"Thriller", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
+  {id:53, month:"December", year:2021, title:"Verity", author:"Colleen Hoover", genre:"Thriller", clubStatus:"Read", rating:"5/5", notes:"Bonus book", myStatus:null},
+  {id:54, month:"November", year:2021, title:"People We Meet on Vacation", author:"Emily Henry", genre:"Romance", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
+  {id:55, month:"October", year:2021, title:"The Lost Apothecary", author:"Sarah Penner", genre:"Historical Fiction", clubStatus:"Read", rating:"5/5", notes:null, myStatus:null},
   {id:56, month:"September", year:2021, title:"Aristotle and Dante", author:"Benjamin Alire Saenz", genre:"YA Fiction", clubStatus:"Read", rating:null, notes:null, myStatus:null},
   {id:57, month:"August", year:2021, title:"Educated", author:"Tara Westover", genre:"Memoir", clubStatus:"Read", rating:null, notes:null, myStatus:null},
   {id:58, month:"July", year:2021, title:"Mujeres del alma mia", author:"Isabel Allende", genre:"Nonfiction", clubStatus:"Read", rating:null, notes:null, myStatus:null},
@@ -90,10 +89,10 @@ const BOOKS_INITIAL = [
   {id:68, month:"September", year:2020, title:"In Five Years", author:"Rebecca Serle", genre:"Contemporary Fiction", clubStatus:"Read", rating:null, notes:null, myStatus:null},
   {id:69, month:"August", year:2020, title:"The Silent Patient", author:"Alex Michaelides", genre:"Psychological Thriller", clubStatus:"Read", rating:null, notes:null, myStatus:null},
   {id:70, month:"July", year:2020, title:"Then She Was Gone", author:"Lisa Jewell", genre:"Thriller", clubStatus:"Read", rating:null, notes:null, myStatus:null},
-  {id:71, month:"June", year:2020, title:"The Giver of Stars", author:"Jojo Moyes", genre:"Historical Fiction", clubStatus:"Read", rating:5, notes:"The very first pick!", myStatus:null},
+  {id:71, month:"June", year:2020, title:"The Giver of Stars", author:"Jojo Moyes", genre:"Historical Fiction", clubStatus:"Read", rating:"5/5", notes:"The very first pick!", myStatus:null},
 ];
 
-const STORAGE_KEY = "btw_bookclub_v3";
+const STORAGE_KEY = "btw_bookclub_v2";
 function loadData() {
   try { const s = localStorage.getItem(STORAGE_KEY); if (s) return JSON.parse(s); } catch {}
   return BOOKS_INITIAL;
@@ -102,40 +101,12 @@ function saveData(books) {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(books)); } catch {}
 }
 
-function Stars({ value, onChange, size = 20 }) {
-  const [hover, setHover] = useState(null);
-  return (
-    <span style={{ display: "inline-flex", gap: 2 }}>
-      {RATING_OPTIONS.map(n => (
-        <span
-          key={n}
-          onClick={e => { e.stopPropagation(); onChange(value === n ? null : n); }}
-          onMouseEnter={() => setHover(n)}
-          onMouseLeave={() => setHover(null)}
-          style={{ fontSize: size, cursor: "pointer", color: n <= (hover ?? value ?? 0) ? C.starColor : "#D4A8B8", transition: "color 0.1s", userSelect: "none" }}
-        >
-          {n <= (hover ?? value ?? 0) ? "★" : "☆"}
-        </span>
-      ))}
-    </span>
-  );
-}
-
-function StarDisplay({ value, size = 14 }) {
-  if (!value) return null;
-  return (
-    <span style={{ fontSize: size, color: C.starColor, letterSpacing: 1 }}>
-      {"★".repeat(value)}{"☆".repeat(5 - value)}
-    </span>
-  );
-}
-
 export default function App() {
   const [books, setBooks] = useState(() => loadData());
   const [search, setSearch] = useState("");
   const [filterStatus, setFilterStatus] = useState("All");
   const [tab, setTab] = useState("list");
-  const [addForm, setAddForm] = useState({ title: "", author: "", genre: "", month: "", year: new Date().getFullYear(), notes: "", myStatus: "To Be Read", rating: null });
+  const [addForm, setAddForm] = useState({ title: "", author: "", genre: "", month: "", year: new Date().getFullYear(), notes: "", myStatus: "To Be Read" });
   const [toast, setToast] = useState(null);
   const [expandedId, setExpandedId] = useState(null);
   const toastTimer = useRef(null);
@@ -150,25 +121,29 @@ export default function App() {
 
   function updateMyStatus(id, status) {
     setBooks(prev => prev.map(b => b.id === id ? { ...b, myStatus: status } : b));
-    showToast("Updated to " + status);
-  }
-
-  function updateRating(id, rating) {
-    setBooks(prev => prev.map(b => b.id === id ? { ...b, rating } : b));
+    showToast('Updated to "' + status + '"');
   }
 
   function addBook() {
-    if (!addForm.title.trim() || !addForm.author.trim()) { showToast("Title and author are required", "error"); return; }
+    if (!addForm.title.trim() || !addForm.author.trim()) {
+      showToast("Title and author are required", "error");
+      return;
+    }
     const newBook = {
-      id: Date.now(), month: addForm.month || "--",
+      id: Date.now(),
+      month: addForm.month || "--",
       year: parseInt(addForm.year) || new Date().getFullYear(),
-      title: addForm.title.trim(), author: addForm.author.trim(),
-      genre: addForm.genre.trim() || "Fiction", clubStatus: "--",
-      rating: addForm.rating, notes: addForm.notes.trim() || null, myStatus: addForm.myStatus,
+      title: addForm.title.trim(),
+      author: addForm.author.trim(),
+      genre: addForm.genre.trim() || "Fiction",
+      clubStatus: "--",
+      rating: "--",
+      notes: addForm.notes.trim() || null,
+      myStatus: addForm.myStatus,
     };
     setBooks(prev => [newBook, ...prev]);
-    setAddForm({ title: "", author: "", genre: "", month: "", year: new Date().getFullYear(), notes: "", myStatus: "To Be Read", rating: null });
-    showToast(newBook.title + " added!");
+    setAddForm({ title: "", author: "", genre: "", month: "", year: new Date().getFullYear(), notes: "", myStatus: "To Be Read" });
+    showToast('"' + newBook.title + '" added!');
     setTab("list");
   }
 
@@ -185,17 +160,11 @@ export default function App() {
   const tbrCount = books.filter(b => b.myStatus === "To Be Read").length;
   const dnfCount = books.filter(b => b.myStatus === "Did Not Finish").length;
   const noStatusCount = books.filter(b => !b.myStatus).length;
-
-  const ratedBooks = books.filter(b => b.rating != null);
-  const avgRating = ratedBooks.length ? (ratedBooks.reduce((s, b) => s + b.rating, 0) / ratedBooks.length).toFixed(1) : null;
-  const ratingDist = [1,2,3,4,5].map(n => ({ n, count: books.filter(b => b.rating === n).length }));
-  const topRated = [...books].filter(b => b.rating === 5).slice(0, 5);
-
   const genreCounts = {};
   books.forEach(b => { const g = b.genre || "Unknown"; genreCounts[g] = (genreCounts[g] || 0) + 1; });
   const topGenres = Object.entries(genreCounts).sort((a, b) => b[1] - a[1]).slice(0, 6);
 
-  const inp = { width: "100%", padding: "10px 12px", borderRadius: 8, border: "1.5px solid #D4A8B8", fontSize: 14, fontFamily: "Georgia,serif", outline: "none", background: "#fff", color: C.bodyText, boxSizing: "border-box" };
+  const inp = { width: "100%", padding: "10px 12px", borderRadius: 8, border: "1.5px solid #D4A8B8", fontSize: 14, fontFamily: "Georgia,serif", outline: "none", background: "#fff", color: C.bodyText };
 
   return (
     <div style={{ minHeight: "100vh", background: C.warmCream, fontFamily: "Georgia,serif", maxWidth: 600, margin: "0 auto", paddingBottom: 80 }}>
@@ -205,7 +174,7 @@ export default function App() {
         <div style={{ fontSize: 26, fontWeight: "bold" }}>Wines Book Club</div>
         <div style={{ fontSize: 11, opacity: 0.55, marginTop: 3, fontStyle: "italic" }}>We can read between the wines</div>
         <div style={{ marginTop: 12, display: "flex", justifyContent: "center", gap: 20 }}>
-          {[["total", totalBooks], ["read", readCount], ["avg rating", avgRating || "--"]].map(([lbl, n]) => (
+          {[["total", totalBooks], ["read", readCount], ["reading", currentlyCount]].map(([lbl, n]) => (
             <div key={lbl} style={{ textAlign: "center" }}>
               <div style={{ fontSize: 15, fontWeight: "bold" }}>{n}</div>
               <div style={{ fontSize: 9, opacity: 0.55, textTransform: "uppercase", letterSpacing: 1 }}>{lbl}</div>
@@ -224,7 +193,7 @@ export default function App() {
 
       {tab === "list" && (
         <div style={{ padding: "14px 12px 0" }}>
-          <input placeholder="Search title, author, genre..." value={search} onChange={e => setSearch(e.target.value)} style={{ ...inp, marginBottom: 10 }} />
+          <input placeholder="Search title, author, genre..." value={search} onChange={e => setSearch(e.target.value)} style={{ ...inp, marginBottom: 10, width: "100%", boxSizing: "border-box" }} />
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 12 }}>
             {["All", ...STATUS_OPTIONS, "No Status"].map(s => {
               const active = filterStatus === s;
@@ -237,7 +206,6 @@ export default function App() {
             })}
           </div>
           <div style={{ fontSize: 11, color: C.mutedText, marginBottom: 8 }}>{filtered.length} books</div>
-
           {filtered.map((book, idx) => {
             const isExpanded = expandedId === book.id;
             const sm = STATUS_META[book.myStatus];
@@ -247,10 +215,7 @@ export default function App() {
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ fontWeight: "bold", fontSize: 14, color: C.deepBurgundy, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{book.title}</div>
                     <div style={{ fontSize: 12, color: C.bodyText, marginTop: 2 }}>{book.author} <span style={{ color: C.monthAccent }}>· {book.month} {book.year}</span></div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 3 }}>
-                      <span style={{ fontSize: 11, color: C.mutedText }}>{book.genre}</span>
-                      {book.rating && <StarDisplay value={book.rating} size={12} />}
-                    </div>
+                    <div style={{ fontSize: 11, color: C.mutedText, marginTop: 2 }}>{book.genre}</div>
                   </div>
                   {sm ? (
                     <span style={{ background: sm.bg, color: sm.text, border: "1px solid " + sm.border, padding: "4px 10px", borderRadius: 14, fontSize: 11, fontWeight: "bold", whiteSpace: "nowrap", flexShrink: 0 }}>{sm.label}</span>
@@ -258,21 +223,14 @@ export default function App() {
                     <span style={{ color: "#D4A8B8", fontSize: 18, flexShrink: 0 }}>o</span>
                   )}
                 </div>
-
                 {isExpanded && (
                   <div style={{ borderTop: "1px solid #E8C8D0", padding: "12px 14px", background: C.warmCream }} onClick={e => e.stopPropagation()}>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
                       <span style={{ background: C.blushRow, color: C.wineRed, border: "1px solid #D4A8B8", padding: "3px 10px", borderRadius: 10, fontSize: 12 }}>{book.genre}</span>
+                      {book.rating && book.rating !== "--" && <span style={{ fontSize: 13, color: C.starColor }}>{book.rating}</span>}
                     </div>
                     {book.notes && <div style={{ fontSize: 12, color: C.mutedText, fontStyle: "italic", marginBottom: 8 }}>{book.notes}</div>}
-                    <div style={{ fontSize: 12, color: C.mutedText, marginBottom: 12 }}>Club: <strong>{book.clubStatus}</strong></div>
-
-                    <div style={{ fontSize: 12, fontWeight: "bold", color: C.wineRed, marginBottom: 6 }}>My Rating</div>
-                    <div style={{ marginBottom: 14 }}>
-                      <Stars value={book.rating} onChange={rating => updateRating(book.id, rating)} size={28} />
-                      {book.rating && <span style={{ fontSize: 12, color: C.mutedText, marginLeft: 8 }}>{book.rating}/5</span>}
-                    </div>
-
+                    <div style={{ fontSize: 12, color: C.mutedText, marginBottom: 10 }}>Club: <strong>{book.clubStatus}</strong></div>
                     <div style={{ fontSize: 12, fontWeight: "bold", color: C.wineRed, marginBottom: 8 }}>My Status</div>
                     <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                       {STATUS_OPTIONS.map(s => {
@@ -301,14 +259,9 @@ export default function App() {
             {[["Title *", "title", "text", "e.g. The Silent Patient"], ["Author *", "author", "text", "e.g. Alex Michaelides"], ["Genre", "genre", "text", "e.g. Thriller"], ["Month", "month", "text", "e.g. May"], ["Year", "year", "number", "2025"], ["Notes", "notes", "text", "Optional"]].map(([label, field, type, placeholder]) => (
               <div key={field} style={{ marginBottom: 14 }}>
                 <div style={{ fontSize: 12, color: C.wineRed, fontWeight: "bold", marginBottom: 4 }}>{label}</div>
-                <input type={type} placeholder={placeholder} value={addForm[field]} onChange={e => setAddForm(f => ({ ...f, [field]: e.target.value }))} style={inp} />
+                <input type={type} placeholder={placeholder} value={addForm[field]} onChange={e => setAddForm(f => ({ ...f, [field]: e.target.value }))} style={{ ...inp, width: "100%", boxSizing: "border-box" }} />
               </div>
             ))}
-            <div style={{ marginBottom: 14 }}>
-              <div style={{ fontSize: 12, color: C.wineRed, fontWeight: "bold", marginBottom: 8 }}>My Rating</div>
-              <Stars value={addForm.rating} onChange={rating => setAddForm(f => ({ ...f, rating }))} size={30} />
-              {addForm.rating && <span style={{ fontSize: 12, color: C.mutedText, marginLeft: 10 }}>{addForm.rating}/5</span>}
-            </div>
             <div style={{ marginBottom: 20 }}>
               <div style={{ fontSize: 12, color: C.wineRed, fontWeight: "bold", marginBottom: 8 }}>My Status</div>
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
@@ -342,45 +295,16 @@ export default function App() {
                 </div>
               ))}
             </div>
-            <div style={{ fontSize: 12, color: C.mutedText, marginBottom: 6 }}>Reading progress</div>
-            <div style={{ background: C.blushRow, borderRadius: 99, height: 10, overflow: "hidden", border: "1px solid #D4A8B8" }}>
-              <div style={{ background: "linear-gradient(90deg," + C.deepBurgundy + "," + C.wineRed + ")", height: "100%", borderRadius: 99, width: totalBooks ? Math.round((readCount / totalBooks) * 100) + "%" : "0%" }} />
-            </div>
-            <div style={{ fontSize: 11, color: C.monthAccent, marginTop: 5, fontWeight: "bold" }}>{totalBooks ? Math.round((readCount / totalBooks) * 100) : 0}% read</div>
-          </div>
-
-          <div style={{ background: "#fff", borderRadius: 12, padding: 20, marginBottom: 14, border: "1px solid #E8C8D0" }}>
-            <div style={{ fontSize: 16, fontWeight: "bold", color: C.deepBurgundy, marginBottom: 14, borderBottom: "2px solid " + C.wineRed, paddingBottom: 8 }}>My Ratings</div>
-            <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 16 }}>
-              <div style={{ textAlign: "center" }}>
-                <div style={{ fontSize: 36, fontWeight: "bold", color: C.wineRed }}>{avgRating || "--"}</div>
-                <div style={{ fontSize: 11, color: C.mutedText }}>avg rating</div>
-                {avgRating && <StarDisplay value={Math.round(avgRating)} size={16} />}
-              </div>
-              <div style={{ fontSize: 12, color: C.mutedText }}>{ratedBooks.length} of {totalBooks} books rated</div>
-            </div>
-            {ratingDist.map(({ n, count }) => (
-              <div key={n} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                <span style={{ fontSize: 13, color: C.starColor, width: 80, flexShrink: 0 }}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>
-                <div style={{ flex: 1, background: C.blushRow, borderRadius: 99, height: 8, overflow: "hidden", border: "1px solid #D4A8B8" }}>
-                  <div style={{ background: C.wineRed, height: "100%", borderRadius: 99, width: ratedBooks.length ? Math.round((count / ratedBooks.length) * 100) + "%" : "0%", transition: "width 0.4s" }} />
+            {totalBooks > 0 && (
+              <div>
+                <div style={{ fontSize: 12, color: C.mutedText, marginBottom: 6 }}>Reading progress</div>
+                <div style={{ background: C.blushRow, borderRadius: 99, height: 10, overflow: "hidden", border: "1px solid #D4A8B8" }}>
+                  <div style={{ background: "linear-gradient(90deg," + C.deepBurgundy + "," + C.wineRed + ")", height: "100%", borderRadius: 99, width: Math.round((readCount / totalBooks) * 100) + "%" }} />
                 </div>
-                <span style={{ fontSize: 12, color: C.mutedText, width: 20, textAlign: "right", flexShrink: 0 }}>{count}</span>
-              </div>
-            ))}
-            {topRated.length > 0 && (
-              <div style={{ marginTop: 14 }}>
-                <div style={{ fontSize: 13, fontWeight: "bold", color: C.wineRed, marginBottom: 8 }}>5-Star Books</div>
-                {topRated.map(b => (
-                  <div key={b.id} style={{ fontSize: 12, color: C.bodyText, marginBottom: 4, padding: "6px 10px", background: C.blushRow, borderRadius: 8, border: "1px solid #E8C8D0" }}>
-                    <span style={{ fontWeight: "bold", color: C.deepBurgundy }}>{b.title}</span>
-                    <span style={{ color: C.mutedText }}> · {b.author}</span>
-                  </div>
-                ))}
+                <div style={{ fontSize: 11, color: C.monthAccent, marginTop: 5, fontWeight: "bold" }}>{Math.round((readCount / totalBooks) * 100)}% read</div>
               </div>
             )}
           </div>
-
           <div style={{ background: "#fff", borderRadius: 12, padding: 20, border: "1px solid #E8C8D0" }}>
             <div style={{ fontSize: 16, fontWeight: "bold", color: C.deepBurgundy, marginBottom: 14, borderBottom: "2px solid " + C.wineRed, paddingBottom: 8 }}>Top Genres</div>
             {topGenres.map(([genre, count]) => (
@@ -388,15 +312,12 @@ export default function App() {
                 <div style={{ flex: 1, fontSize: 13, color: C.bodyText }}>{genre}</div>
                 <div style={{ fontSize: 11, color: C.mutedText }}>{count} books</div>
                 <div style={{ width: 70, background: C.blushRow, borderRadius: 99, height: 7, overflow: "hidden" }}>
-                  <div style={{ background: C.wineRed, height: "100%", borderRadius: 99, width: totalBooks ? Math.round((count / totalBooks) * 100) + "%" : "0%" }} />
+                  <div style={{ background: C.wineRed, height: "100%", borderRadius: 99, width: Math.round((count / totalBooks) * 100) + "%" }} />
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
-      </div>
-      </div>
       )}
 
       {toast && (
@@ -406,6 +327,7 @@ export default function App() {
       )}
 
       <style>{`
+        @keyframes fadein { from { opacity:0 } to { opacity:1 } }
         * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
         button:active { opacity: 0.75; }
         input:focus { border-color: #7A1E3B !important; outline: none; }
